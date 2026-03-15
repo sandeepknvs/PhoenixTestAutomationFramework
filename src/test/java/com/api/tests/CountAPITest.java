@@ -20,7 +20,7 @@ import static com.api.utils.ConfigManager.*;
 
 import static io.restassured.RestAssured.*;
 
-public class countAPITest {
+public class CountAPITest {
 	
 	@Test
 	public void verifyCountAPIResponse()

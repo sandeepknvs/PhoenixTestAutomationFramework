@@ -16,7 +16,7 @@ import io.restassured.http.ContentType;
 import io.restassured.http.Header;
 import io.restassured.module.jsv.JsonSchemaValidator;
 
-public class userDetailsAPIFDTest {
+public class UserDetailsAPIFDTest {
 	
 	@Test
 	public void userDetailsAPIFDTest() throws IOException

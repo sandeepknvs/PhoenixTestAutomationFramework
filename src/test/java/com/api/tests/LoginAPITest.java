@@ -15,7 +15,7 @@ import static com.api.utils.ConfigManager.*;
 import io.restassured.module.jsv.JsonSchemaValidator;
 import io.restassured.response.Response;
 
-public class loginAPITest {
+public class LoginAPITest {
 	
 	@Test
 	public void loginAPITest() throws IOException
