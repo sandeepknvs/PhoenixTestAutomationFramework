@@ -15,22 +15,20 @@ on:
     branches: [ "master" ]
   schedule: #set the cron midnight ist
     - cron: "30 18 * * *"
-  workflow_dispatch:
+   workflow_dispatch: 
     inputs:
       env:
-          description: "Environment"
-          type: choice
-          options: [qa,uat,dev]
-          default: qa
-          required: true
-          
+        description: "Environment"
+        type: choice
+        options: [qa,uat,dev]
+        default: qa
+        required: true
       suiteXmlFile:
-          description: "TestNG XML File"
-          type: choice
-          options: [testng.xml,smoke.xml,regression.xml]
-          default: testng.xml
-          required: true
-
+        description: "TestNG Xml File"
+        type: choice
+        options: [testng.xml,smoke.xml,regression.xml,testng-datadriven.xml]
+        default: testng.xml
+        required: true
 jobs:
   build:
 
