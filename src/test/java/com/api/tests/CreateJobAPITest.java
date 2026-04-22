@@ -11,6 +11,7 @@ import com.api.request.model.CustomerProduct;
 import com.api.request.model.Problems;
 import com.api.utils.AuthTokenProvider;
 import com.api.utils.ConfigManager;
+import static com.api.utils.DateTimeUtil.*;
 import com.api.utils.SpecUtil;
 
 import io.restassured.http.ContentType;
@@ -28,7 +29,7 @@ public class CreateJobAPITest {
 	{
 		Customer customer = new Customer("samdy", "knvs", "8484848888", "", "sandy@mail.com", "");
 		CustomerAddress customerAddress = new CustomerAddress("202", "SriNivas", "Lakshmi Vihar Street 3", "Beside Sai Baba Temple", "Nallagandla", "500019", "India", "Telangana");
-		CustomerProduct customerProduct = new CustomerProduct("2025-04-06T18:30:00.000Z", "21130472357289", "21130472357289", "21130472357289", "2025-04-06T18:30:00.000Z", 1, 1);
+		CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "21130472367289", "21130472367289", "21130472367289", getTimeWithDaysAgo(10), 1, 1);
 		Problems problems = new Problems(1, "Battery Issue");
 		List<Problems> problemsList = new ArrayList<Problems>();
 		problemsList.add(problems);
