@@ -3,7 +3,14 @@ package com.api.tests;
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
+import com.api.constants.Model;
+import com.api.constants.OEM;
+import com.api.constants.Platform;
+import com.api.constants.Problem;
+import com.api.constants.Product;
 import com.api.constants.Role;
+import com.api.constants.ServiceLocation;
+import com.api.constants.Warranty_Status;
 import com.api.request.model.CreateJobPayload;
 import com.api.request.model.Customer;
 import com.api.request.model.CustomerAddress;
@@ -29,11 +36,11 @@ public class CreateJobAPITest {
 	{
 		Customer customer = new Customer("samdy", "knvs", "8484848888", "", "sandy@mail.com", "");
 		CustomerAddress customerAddress = new CustomerAddress("202", "SriNivas", "Lakshmi Vihar Street 3", "Beside Sai Baba Temple", "Nallagandla", "500019", "India", "Telangana");
-		CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "21130472367289", "21130472367289", "21130472367289", getTimeWithDaysAgo(10), 1, 1);
-		Problems problems = new Problems(1, "Battery Issue");
+		CustomerProduct customerProduct = new CustomerProduct(getTimeWithDaysAgo(10), "21230472367289", "21230472367289", "21230472367289", getTimeWithDaysAgo(10), Product.NEXUS_2.getCode(), Model.NEXUS_2_BLUE.getCode());
+		Problems problems = new Problems(Problem.POOR_BATTERY_LIFE.getCode(), "Battery Issue");
 		List<Problems> problemsList = new ArrayList<Problems>();
 		problemsList.add(problems);
-		CreateJobPayload createJobPayload = new CreateJobPayload(0, 2, 1, 1, customer, customerAddress, customerProduct, problemsList);
+		CreateJobPayload createJobPayload = new CreateJobPayload(ServiceLocation.SERVICE_LOCATION_A.getCode(), Platform.FRONT_DESK.getCode(), Warranty_Status.IN_WARRANTY.getCode(), OEM.GOOGLE.getCode(), customer, customerAddress, customerProduct, problemsList);
 		
 		
 		given()
