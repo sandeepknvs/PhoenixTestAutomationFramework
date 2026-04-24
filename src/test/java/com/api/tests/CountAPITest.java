@@ -1,39 +1,30 @@
 package com.api.tests;
 
-import static org.hamcrest.Matchers.*;
+import static com.api.constants.Role.*;
+import static io.restassured.RestAssured.given;
+import static io.restassured.module.jsv.JsonSchemaValidator.*;
+import static org.hamcrest.Matchers.equalTo;
 
 import org.hamcrest.Matchers;
 import org.testng.annotations.Test;
 
-import com.api.utils.SpecUtil;
+import static com.api.utils.SpecUtil.*;
 
 import io.restassured.response.Response;
 
-import static io.restassured.module.jsv.JsonSchemaValidator.*;
-
-import static com.api.constants.Role.*;
-
-import static com.api.utils.AuthTokenProvider.*;
-import static com.api.utils.ConfigManager.*;
-
-import static io.restassured.http.ContentType.*;
-
-import static com.api.utils.ConfigManager.*;
-
-import static io.restassured.RestAssured.*;
-
 public class CountAPITest {
 	
-	@Test
+	@Test(description="Verifying if Count api is giving correct response code for valid token",groups= {"api","regression","smoke"})
+
 	public void verifyCountAPIResponse()
 	{
 		Response response =
 		given()
-		.spec(SpecUtil.reqSpecWithAuth(FD))
+		.spec(reqSpecWithAuth(FD))
 		.when()
 			.get("/dashboard/count")
 		.then()
-			.spec(SpecUtil.responseSpec_OK())
+			.spec(responseSpec_OK())
 			.and()
 			.body("message", equalTo("Success"))
 			.and()
@@ -51,16 +42,17 @@ public class CountAPITest {
 			.extract().response();
 	}
 	
-	@Test
+	@Test(description="Verifying if count api is giving correct response code for invalid token",groups= {"api","negative","regression","smoke"})
+
 	public void countAPITest_MissingAuthToken()
 	{
 		given()
-		.spec(SpecUtil.reqSpec())
+		.spec(reqSpec())
 		.and()
 		.when()
 		.get("/dashboard/count")
 		.then()
-		.spec(SpecUtil.responseSpec_TEXT(401));
+		.spec(responseSpec_TEXT(401));
 	}
 
 }
