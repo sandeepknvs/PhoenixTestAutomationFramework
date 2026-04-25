@@ -1,5 +1,5 @@
 package com.api.request.model;
-
+//comment added
 public record CustomerProduct (
 	 String dop,
 	 String serial_number,
